@@ -52,7 +52,6 @@
                                     <div><input type="radio" name="is_selling" value="0" class="mr-2"
                                             @if ($shop->is_selling === 0) {checked} @endif>停止中</div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="p-2 w-full mt-4 flex justify-around">
