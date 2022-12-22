@@ -9,6 +9,7 @@ use App\Http\Controllers\Owner\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use App\Http\Controllers\Owner\ImageController;
+use App\Http\Controllers\Owner\ProductController;
 use App\Http\Controllers\Owner\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +39,11 @@ Route::prefix('shops')
             ->name('shops.update');
     });
 
-    Route::resource('images', ImageController::class)
+Route::resource('images', ImageController::class)
+    ->middleware('auth:owners')
+    ->except(['show']);
+
+Route::resource('products', ProductController::class)
     ->middleware('auth:owners')
     ->except(['show']);
 
