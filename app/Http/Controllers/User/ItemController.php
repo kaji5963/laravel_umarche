@@ -63,7 +63,6 @@ class ItemController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-
         return view('user.show', compact('product'));
     }
 }
