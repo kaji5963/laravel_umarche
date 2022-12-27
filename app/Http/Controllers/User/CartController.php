@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Stock;
+use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,6 +57,13 @@ class CartController extends Controller
 
     public function checkout()
     {
+        ////
+        $items = Cart::where('user_id', Auth::id())->get();
+        $products = CartService::getItemInCart($items);
+
+        ////
+
+
         $user = User::findOrFail(Auth::id());
         $products = $user->product;
 
