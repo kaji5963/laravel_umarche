@@ -34,9 +34,10 @@ class ItemController extends Controller
     {
         // dd($request);
         $products = Product::availableItems()
-        ->selectCategory($request->category ?? '0')
-        ->sortOrder($request->sort)
-        ->paginate($request->pagination ?? '20');
+        ->selectCategory($request->category ?? '0') //scope  product.php
+        ->searchKeyword($request->keyword) //scope  product.php
+        ->sortOrder($request->sort) //scope  product.php
+        ->paginate($request->pagination ?? '20'); //scope  product.php
 
         $categories = PrimaryCategory::with('secondary')->get();
 
